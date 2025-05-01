@@ -3,5 +3,6 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "css.experimental.customData": [".vscode/tailwind-custom-data.json"]
 }
