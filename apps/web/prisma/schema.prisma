@@ -9,10 +9,13 @@ datasource db {
 }
 
 model User {
-  id          Int         @id   @unique   @default(autoincrement())
-  username    String      @unique
-  email       String      @unique
-  firstName   String?
-  lastName    String?
-  password    String
+  id             Int         @id   @unique   @default(autoincrement())
+  username       String?     @unique
+  name           String?
+  email          String      @unique
+  password       String?     // for credential user
+  emailVerified  DateTime?
+  image          String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
 }
