@@ -4,6 +4,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import prisma from '@/lib/prisma';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { redirect } from 'next/navigation';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -19,59 +21,39 @@ export const authOptions: NextAuthOptions = {
         if (!credentials) return null;
 
         const { email, password } = credentials;
+
+        console.log(email, password);
+
         const user = await prisma.user.findUnique({
           where: { email },
         });
 
-        if (user) {
-          // user already registered]
+        if (!user) throw new Error('User not signed up');
 
-          if (user.emailVerified) {
-            // match user
-            if (!user.password) {
-              throw new Error(
-                'User does not have a password set. Choose another login method.'
-              );
-            }
+        // match user
+        if (!user.password)
+          throw new Error(
+            'User does not have a password set. Choose another login method.'
+          );
 
-            const hashedPassword = await bcrypt.compare(
-              password,
-              user.password
-            );
+        const hashedPassword = await bcrypt.compare(password, user.password);
 
-            if (!hashedPassword) {
-              throw new Error('Password not matched');
-            }
+        if (!hashedPassword) throw new Error('Password not matched');
 
-            // user verified
-            return {
-              id: user.id.toString(),
-              email: user.email,
-            };
-          } else {
-            // await verify user email
-            throw new Error('User email not verified');
-          }
-        } else {
-          // user not registered
-
-          const hashedPassword = await bcrypt.hash(password, 10);
-
-          const userCreated = await prisma.user.create({
-            data: {
-              username: email.split('@')[0] as string,
-              email: email,
-              password: hashedPassword,
-            },
+        if (!user.emailVerified) {
+          // await verify user email
+          const token = jwt.sign({ email }, process.env.JWT_SECRET!, {
+            expiresIn: '10m',
           });
 
-          // await verify user email
-
-          return {
-            id: userCreated.id.toString(),
-            email: userCreated.email,
-          };
+          throw new Error(`EMAIL_NOT_VERIFIED|${token}`);
         }
+
+        // user verified
+        return {
+          id: user.id.toString(),
+          email: user.email,
+        };
       },
     }),
     GoogleProvider({
@@ -92,13 +74,6 @@ export const authOptions: NextAuthOptions = {
 
         if (!dbUser) {
           // new user - create and verify
-          console.log({
-            email: user.email as string,
-            username: user.email?.split('@')[0] as string,
-            name: user.name,
-            image: user.image,
-            emailVerified: new Date(),
-          });
 
           await prisma.user.create({
             data: {
@@ -118,9 +93,13 @@ export const authOptions: NextAuthOptions = {
         } else {
           // User already exists and verified - login
         }
+
+        return true;
       }
 
-      return true;
+      if (account?.provider === 'credentials') return true;
+
+      return false;
     },
     async jwt({ token, user }) {
       if (user) {
@@ -141,7 +120,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: '/sign-in',
-    // error: '/auth/error',
+    error: '/auth/error',
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

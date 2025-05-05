@@ -1,23 +1,23 @@
 .h1-bold {
   font-family: Inter;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 1.85rem;
   line-height: 140%;
   letter-spacing: -1px;
 }
 
 .h2-bold {
-  font-family: 'Inter';
+  font-family: Inter;
   font-weight: 700;
-  font-size: '24px';
-  line-height: '130%';
-  letter-spacing: '0%';
+  font-size: 1.5rem;
+  line-height: 130%;
+  letter-spacing: 0%;
 }
 
-.h2-semibold {
+.h2-sremibold {
   font-family: Inter;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 130%;
   letter-spacing: 0%;
 }
@@ -25,15 +25,15 @@
 .h3-bold {
   font-family: Inter;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 130%;
   letter-spacing: 0%;
 }
 
-.h3-semibold {
+.h3-sremibold {
   font-family: Inter;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 124%;
   letter-spacing: 0%;
 }
@@ -41,15 +41,15 @@
 .base-medium {
   font-family: Inter;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 140%;
   letter-spacing: 0px;
 }
 
-.base-semibold {
+.base-sremibold {
   font-family: Inter;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 140%;
   letter-spacing: 0%;
 }
@@ -57,7 +57,7 @@
 .base-bold {
   font-family: Inter;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 140%;
   letter-spacing: 0px;
 }
@@ -65,15 +65,15 @@
 .para-regular {
   font-family: Inter;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 140%;
   letter-spacing: 0px;
 }
 
-.para-semibold {
+.para-sremibold {
   font-family: Inter;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 130%;
   letter-spacing: 0%;
 }
@@ -81,7 +81,7 @@
 .para-medium {
   font-family: Inter;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 140%;
   letter-spacing: 0px;
   text-align: center;
@@ -90,7 +90,7 @@
 .body-regular {
   font-family: Inter;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 140%;
   letter-spacing: 0%;
 }
@@ -98,7 +98,7 @@
 .body-semibold {
   font-family: Inter;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 130%;
   letter-spacing: 0%;
 }
@@ -106,7 +106,7 @@
 .body-medium {
   font-family: Inter;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 130%;
   letter-spacing: 0%;
 }
@@ -114,7 +114,7 @@
 .small-regular {
   font-family: Inter;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 130%;
   letter-spacing: 0%;
 }
@@ -122,7 +122,7 @@
 .small-semibold {
   font-family: Inter;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 130%;
   letter-spacing: 0%;
 }
@@ -130,7 +130,7 @@
 .small-medium {
   font-family: Inter;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 130%;
   letter-spacing: 0%;
 }
@@ -138,7 +138,7 @@
 .subtle-medium {
   font-family: Inter;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 0.625rem;
   line-height: 130%;
   letter-spacing: 0%;
   text-transform: uppercase;
@@ -147,7 +147,7 @@
 .subtle-regular {
   font-family: Inter;
   font-weight: 400;
-  font-size: 10px;
+  font-size: 0.625rem;
   line-height: 130%;
   letter-spacing: 0%;
 }

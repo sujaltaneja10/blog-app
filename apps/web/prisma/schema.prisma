@@ -19,3 +19,12 @@ model User {
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 }
+
+model VerificationToken {
+  id            Int         @id @default(autoincrement())
+  email         String      
+  token         String      @unique
+  expires       DateTime
+
+  @@index([token])
+}
