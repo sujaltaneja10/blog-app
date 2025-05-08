@@ -5,7 +5,6 @@ import GoogleProvider from 'next-auth/providers/google';
 import prisma from '@/lib/prisma';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { redirect } from 'next/navigation';
 
 export const authOptions: NextAuthOptions = {
   providers: [
